@@ -1,0 +1,15 @@
+{
+  "name": "apn-puppeteer",
+  "version": "1.0.0",
+  "description": "AWS Partner Network Automation Suite",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Williams <voodootikigod@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "puppeteer": "^19.3.0"
+  }
+}
