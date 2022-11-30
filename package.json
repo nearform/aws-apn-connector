@@ -4,12 +4,21 @@
   "description": "AWS Partner Network Automation Suite",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "Chris Williams <voodootikigod@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
-    "puppeteer": "^19.3.0"
+    "puppeteer": "^19.3.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "eslint": "^8.28.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "mocha": "^10.1.0"
   }
 }
