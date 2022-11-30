@@ -4,7 +4,8 @@
   "description": "AWS Partner Network Automation Suite",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "prepare": "husky install"
   },
   "author": "Chris Williams <voodootikigod@gmail.com>",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.5.0",
-    "mocha": "^10.1.0"
+    "mocha": "^10.1.0",
+    "husky": "^8.0.0"
   }
 }
