@@ -9,8 +9,10 @@
   "author": "Chris Williams <voodootikigod@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "chrome-launcher": "^0.15.1",
     "dotenv": "^16.0.3",
     "puppeteer": "^19.3.0",
+    "superagent": "^8.0.4",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
@@ -19,6 +21,10 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.5.0",
-    "mocha": "^10.1.0"
+    "mocha": "^10.1.0",
+    "@serverless-chrome/lambda": "^1.0.0-57.2",
+    "serverless": "^3.25.1",
+    "serverless-offline": "^11.6.0",
+    "serverless-plugin-chrome": "^1.0.0-55.3"
   }
 }
