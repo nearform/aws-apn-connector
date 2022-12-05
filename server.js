@@ -27,7 +27,7 @@ const start = async () => {
     ],
     executablePath: 'google-chrome',
   });
-  app.listen(PORT, () => logger.log(`Listening on port ${PORT}`));
+  app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 };
 
 start();
