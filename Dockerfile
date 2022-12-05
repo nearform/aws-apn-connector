@@ -20,4 +20,4 @@ RUN npm install --production
 COPY . .
 
 # Run the web service on container startup.
-CMD [ "node", "app.js" ]
+CMD [ "node", "server.js" ]
