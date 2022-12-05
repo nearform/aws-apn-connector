@@ -12,7 +12,7 @@ app.get('/opportunities', async (req, res) => {
   res.send(opps);
 });
 
-app.get('certifications', async (req, res) => {
+app.get('/certifications', async (req, res) => {
   const certifications = await apn.certifications();
   res.send(certifications);
 });
@@ -27,7 +27,7 @@ const start = async () => {
     ],
     executablePath: 'google-chrome',
   });
-  app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+  app.listen(PORT, () => console.log(`Revisioned Listening on port ${PORT}`));
 };
 
 start();
