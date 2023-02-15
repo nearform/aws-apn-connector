@@ -1,7 +1,7 @@
 'use strict';
 require('dotenv').config();
 
-const apn = require('./lib/apn');
+const apn = require('../lib/apn');
 
 
 const USERNAME = process.env.APN_USERNAME||'';

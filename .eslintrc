@@ -1,0 +1,14 @@
+{
+  "extends": ["eslint:recommended", "plugin:mocha/recommended", "plugin:prettier/recommended"],
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "plugins": [
+    "mocha"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  }
+}
