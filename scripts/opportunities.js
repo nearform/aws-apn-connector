@@ -1,11 +1,8 @@
 'use strict';
 
-const path=require('path');
-require('dotenv').config({
-  path: path.resolve(process.cwd(), '.env.local',
-  )});
+require('dotenv').config();
 
-const apn = require('./lib/apn');
+const apn = require('../lib/apn');
 
 
 const USERNAME = process.env.APN_USERNAME||'';

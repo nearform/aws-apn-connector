@@ -1,5 +1,6 @@
 .build
 .env.local
+.env
 
 # package directories
 node_modules
