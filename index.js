@@ -4,6 +4,7 @@ import XLSX from "xlsx";
 export function Client(puppeteerOptions = {}) {
   let _browser = null;
   let _page = null;
+  // eslint-disable-next-line no-unused-vars
   let _viewId = null;
   const apn = {
     connect: async (username, password) => {
@@ -51,6 +52,7 @@ export function Client(puppeteerOptions = {}) {
       await page.waitForNavigation({ waitUntil: "networkidle2" });
 
       const viewId = await page.evaluate(() => {
+        // eslint-disable-next-line no-undef
         const ocText = document
           .querySelectorAll("#editcustomviewlink")[0]
           .onclick.toString();
@@ -62,6 +64,7 @@ export function Client(puppeteerOptions = {}) {
       // visualforce to prepare the data then gather via fetch the excel
       // file and return
       const opportunityXLSX = await page.evaluate(async (viewId) => {
+        // eslint-disable-next-line no-undef
         await opportunityExportPreConfirmation(viewId);
         const url = `https://partnercentral.awspartner.com/ExportXls?viewId=${viewId}&fs=PartnerOpportunityExport`;
         const d = await fetch(url, {
