@@ -1,15 +1,12 @@
-'use strict';
-require('dotenv').config();
+import { Client } from "../index.js";
 
-const apn = require('../lib/apn');
-
-
-const USERNAME = process.env.APN_USERNAME||'';
-const PASSWORD = process.env.APN_PASSWORD||'';
+const USERNAME = process.env.APN_USERNAME || "";
+const PASSWORD = process.env.APN_PASSWORD || "";
 
 (async () => {
-  await apn.init(USERNAME, PASSWORD);
+  const apn = new Client({ headless: false });
+  await apn.connect(USERNAME, PASSWORD);
   const certs = await apn.certifications();
   console.log(certs);
-  await apn.close();
+  return apn.end();
 })();

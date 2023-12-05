@@ -5,7 +5,7 @@ export function Client(puppeteerOptions = {}) {
   let _browser = null;
   let _page = null;
   let _viewId = null;
-  return {
+  const apn = {
     connect: async (username, password) => {
       if (!username || !password) {
         throw new Error("Authentication credentials are required");
@@ -41,16 +41,6 @@ export function Client(puppeteerOptions = {}) {
       _page = page;
       return page;
     },
-    _opportunitiesXLSXtoJSON: (xlsx, options = {}) => {
-      const workbook = XLSX.read(xlsx, options);
-      const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-      return XLSX.utils.sheet_to_json(worksheet);
-    },
-    _certificationsCSVtoJSON: (csv, options = {}) => {
-      const workbook = XLSX.read(csv, options);
-      const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-      return XLSX.utils.sheet_to_json(worksheet);
-    },
     opportunities: async () => {
       const page = _page;
       // Go to the opportunity list page to access the functions enabled there
@@ -82,26 +72,39 @@ export function Client(puppeteerOptions = {}) {
       }, viewId);
 
       // convert to json objects
-      return _opportunitiesXLSXtoJSON(opportunityXLSX, { type: "string" });
+      return opportunitiesXLSXtoJSON(opportunityXLSX, { type: "string" });
     },
     certifications: async () => {
-      const certifications = await _getCSV(
+      const certifications = await getCSV(
+        _page,
         "https://partnercentral.awspartner.com/PartnerCertificationDetailsExport"
       );
-      return _certificationsCSVtoJSON(certifications, { type: "string" });
-    },
-    _getCSV: async (url) => {
-      const csv = await _page.evaluate(async (url) => {
-        const d = await fetch(url, {
-          method: "GET",
-          credentials: "include",
-        });
-        return d.text();
-      }, url);
-      return csv;
+      return certificationsCSVtoJSON(certifications, { type: "string" });
     },
     end: async () => {
       return _browser ? _browser.close() : Promise.resolve();
     },
   };
+  return apn;
+}
+
+export async function getCSV(_page, url) {
+  const csv = await _page.evaluate(async (url) => {
+    const d = await fetch(url, {
+      method: "GET",
+      credentials: "include",
+    });
+    return d.text();
+  }, url);
+  return csv;
+}
+export function opportunitiesXLSXtoJSON(xlsx, options = {}) {
+  const workbook = XLSX.read(xlsx, options);
+  const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+  return XLSX.utils.sheet_to_json(worksheet);
+}
+export function certificationsCSVtoJSON(csv, options = {}) {
+  const workbook = XLSX.read(csv, options);
+  const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+  return XLSX.utils.sheet_to_json(worksheet);
 }

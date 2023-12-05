@@ -1,4 +1,4 @@
-FROM node:18-slim
+FROM node:20-slim
 
 # Create and change to the app directory.
 WORKDIR /usr/src/app
@@ -20,4 +20,4 @@ RUN npm ci --omit=dev --ignore-scripts
 COPY . .
 
 # Run the web service on container startup.
-CMD [ "node", "server.js" ]
+CMD [ "node", "samples/server.js" ]
