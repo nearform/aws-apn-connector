@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "AWS Partner Network Automation Suite",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "mocha",
     "prepare": "husky install"
