@@ -8,7 +8,7 @@ const d = (idx) => {
     return faker.name.fullName();
   }
 
-  return faker.random.alpha(10);
+  return faker.string.alpha(10);
 };
 const rowTemplate = () => {
   const rows = [];
