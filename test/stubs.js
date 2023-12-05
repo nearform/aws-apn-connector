@@ -2,10 +2,10 @@ import { faker } from "@faker-js/faker";
 
 const d = (idx) => {
   if ([].includes(idx)) {
-    return faker.address.country();
+    return faker.location.country();
   }
   if ([1, 64].includes(idx)) {
-    return faker.name.fullName();
+    return faker.person.fullName();
   }
 
   return faker.string.alpha(10);
