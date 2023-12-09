@@ -15,32 +15,35 @@ export function Client(puppeteerOptions = {}) {
         _browser = await puppeteer.launch(puppeteerOptions);
       }
       const page = await _browser.newPage();
-      await page.goto("https://partnercentral.awspartner.com/APNLogin", {
-        waitUntil: "networkidle2",
+      await page.goto("https://partnercentral.awspartner.com/partnercentral2/s/login", {
+        // waitUntil: "networkidle2",
       });
 
       // email
-      const emailInput = "#loginPage\\:loginForm\\:registerWhoEmailInput";
+      const emailInput = "#input-38";
       await page.type(emailInput, username);
 
       // password
-      const passInput = "#loginPage\\:loginForm\\:registerPassPasswordInput";
+      const passInput = "#input-44";
       await page.type(passInput, password);
 
-      await page.click("#loginPage\\:loginForm\\:loginBtn");
+      await page.click("button.slds-button.slds-button_brand");
       await page.waitForNavigation({ waitUntil: "networkidle2" });
 
       // go to the home
       await page.waitForSelector(".plrs-badge");
-      // const blueButtonLink = await page.evaluate(() => {
-      //   return document.querySelectorAll('.blueButtonLink')[1].href;
-      // });
-      // _viewId = blueButtonLink.split('viewId=')[1];
 
       _viewId = "a3H0h000000pQEbEAM";
       console.log("Authenticated into the APN");
       _page = page;
       return page;
+    },
+
+    deactivateUserByEmail: async (email) => {
+      await page.goto("https://partnercentral.awspartner.com/UserAdministrationPage")
+      const user = await page.waitForSelector(`a ::-p-text(${email}`)
+      console.log(user);
+
     },
     opportunities: async () => {
       const page = _page;
