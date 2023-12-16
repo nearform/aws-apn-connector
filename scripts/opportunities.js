@@ -6,7 +6,7 @@ const PASSWORD = process.env.APN_PASSWORD || "";
 (async () => {
   const apn = new Client({ headless: false });
   await apn.connect(USERNAME, PASSWORD);
-  const certs = await apn.opportunities();
+  const certs = await apn.opportunities.all();
   console.log(certs);
   return apn.end();
 })();
