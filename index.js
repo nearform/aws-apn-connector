@@ -1,8 +1,14 @@
-import puppeteer from 'puppeteer'
-import XLSX from 'xlsx'
+// import puppeteer from 'puppeteer'
+import playwright from 'playwright'
 
-export function Client(puppeteerOptions = {}) {
+
+
+
+  
+
+export function Client(options = {}) {
   let _browser = null
+  let _context = null
   let _page = null
   // eslint-disable-next-line no-unused-vars
   let _viewId = null
@@ -12,17 +18,19 @@ export function Client(puppeteerOptions = {}) {
         throw new Error('Authentication credentials are required')
       }
       if (!_browser) {
-        _browser = await puppeteer.launch(puppeteerOptions)
+        _browser = await playwright.chromium.launch(options)
+        _context = await _browser.newContext()
       }
-      const page = await _browser.newPage()
-      await page.goto(
-        'https://partnercentral.awspartner.com/partnercentral2/s/login',
-        {
-          // waitUntil: "networkidle2",
-        }
-      )
+      const page = await _context.newPage()
+      await page.goto('https://partnercentral.awspartner.com/partnercentral2/s/login')
+      await page.getByLabel('*Business email').fill(username);
+      await page.getByLabel('*Password').fill(password);
+      await page.getByRole('button', { name: 'Sign in' }).click();
+      // need to handle jitter
+      await page.waitForTimeout(2000)
+      await page.waitForURL('**/s/');
 
-      // email
+/*      // email
       const emailInput = '#input-38'
       await page.type(emailInput, username)
 
@@ -35,8 +43,8 @@ export function Client(puppeteerOptions = {}) {
 
       // go to the home
       await page.waitForSelector('.plrs-badge')
-
-      _viewId = 'a3H0h000000pQEbEAM'
+*/
+      // _viewId = 'a3H0h000000pQEbEAM'
       console.log('Authenticated into the APN')
       _page = page
       return page
@@ -59,21 +67,28 @@ export function Client(puppeteerOptions = {}) {
           'https://partnercentral.awspartner.com/partnercentral2/s/pipeline-manager',
           { waitUntil: 'domcontentloaded' }
         )
-        await page.waitForNavigation({ waitUntil: 'networkidle2' })
-        // await page.$x(`//input[contains(text(), 'Bulk actions')]`)[0].click()
-        await page.click('div.bulkActionNoLV div.slds-combobox')
+        // await page.getByRole('button', { name: 'View opportunities' }).click();
+        await page.getByRole('textbox', { name: 'Bulk actions' }).click();
+        const downloadPromise = page.waitForEvent('download');
+        await page.getByText('Export Opportunities - All Opportunities', { exact: true }).click();
+        const download = await downloadPromise;
+        console.log(download.text())
+        return download
 
-        const resp = await page.$x(`//span[contains(text(), 'Export Opportunities - All Opportunities')]`)[0].click()
-        console.log(resp)
 
+
+
+        // await page.waitForNavigation({ waitUntil: 'networkidle2' })
+        // await page.waitForTimeout(4000)
+        // await page.$$(`input[title='Bulk actions']`)[0].click()
+        // await page.waitForTimeout(40000)
         // const viewId = await page.evaluate(() => {
         //   // eslint-disable-next-line no-undef
-        //   const ocText = document
-        //     .querySelectorAll('#editcustomviewlink')[0]
-        //     .onclick.toString()
-        //   const id = ocText.split("'")[1]
-        //   return id
+        //   const ocText = document.querySelectorAll("li[title='Export Opportunities - All Opportunities']")[0].click();
+        //   return ocText
         // })
+        // console.log(viewId)
+        // return []
 
         // // When settled, access the packaged functions to trigger/enable
         // // visualforce to prepare the data then gather via fetch the excel
@@ -129,7 +144,7 @@ export function Client(puppeteerOptions = {}) {
       return _browser ? _browser.close() : Promise.resolve()
     }
   }
-  
+
   return apn
 }
 
