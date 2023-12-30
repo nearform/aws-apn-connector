@@ -1,31 +1,33 @@
-const faker = require('@faker-js/faker').faker;
+import { faker } from "@faker-js/faker";
 
 const d = (idx) => {
   if ([].includes(idx)) {
-    return faker.address.country();
+    return faker.location.country();
   }
   if ([1, 64].includes(idx)) {
-    return faker.name.fullName();
+    return faker.person.fullName();
   }
 
-  return faker.random.alpha(10);
+  return faker.string.alpha(10);
 };
 const rowTemplate = () => {
   const rows = [];
-  for (let a = 0; a< 70; a++) {
-    rows.push(`<Cell ss:StyleID="colData"><Data ss:Type="String">${d(a)}</Data></Cell>`);
+  for (let a = 0; a < 70; a++) {
+    rows.push(
+      `<Cell ss:StyleID="colData"><Data ss:Type="String">${d(a)}</Data></Cell>`
+    );
   }
 
-  return `<Row>${rows.join('\n')}</Row>`;
+  return `<Row>${rows.join("\n")}</Row>`;
 };
 
-module.exports = {
-  opportunities: (rows=10) => {
-    const data = [];
-    for (let i=0; i < rows; i++) {
-      data.push(rowTemplate());
-    }
-    return Buffer.from(`<?xml version="1.0"?><?mso-application progid="Excel.Sheet"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:x="urn:schemas-microsoft-com:office:excel">
+export function opportunities(rows = 10) {
+  const data = [];
+  for (let i = 0; i < rows; i++) {
+    data.push(rowTemplate());
+  }
+  return Buffer.from(
+    `<?xml version="1.0"?><?mso-application progid="Excel.Sheet"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:x="urn:schemas-microsoft-com:office:excel">
     <Styles>
         <Style ss:ID="colHeader">
             <Alignment ss:Vertical="Center" ss:WrapText="1"></Alignment>
@@ -64,8 +66,9 @@ module.exports = {
             <Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:37:j_id9">Primary Contact Title</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:38:j_id9">Procurement Type</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:39:j_id9">Customer Software Value</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:40:j_id11">Contract Effective Date/Term Start Date(MM/DD/YYYY)</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:41:j_id11">Contract Expiration Date(MM/DD/YYYY)</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:42:j_id9">Solution Tenancy</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:43:j_id9">Customer Software Value Currency</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:44:j_id9">Status</span></Data></Cell>
             <Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:45:j_id9">Customer First Name</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:46:j_id9">Customer Last Name</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:47:j_id9">Customer Title</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:48:j_id9">Customer Phone</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:49:j_id9">AWS Sales Rep Name</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:50:j_id9">AWS Sales Rep Email</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:51:j_id9">Primary Contact Name</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:52:j_id9">Lead Source</span></Data></Cell>
             <Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:53:j_id9">Created Date</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:54:j_id9">Last Modified Date</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:55:j_id9">Country</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:56:j_id9">Biz Unit</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:57:j_id9">Customer Website</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:58:j_id9">If Other, please describe your needs</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:59:j_id11">Date Submitted(MM/DD/YYYY)</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:60:j_id11">Date Approved/Rejected(MM/DD/YYYY)</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:61:j_id9">Industry Vertical</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:62:j_id9">Industry Other</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:63:j_id9">Opportunity Ownership</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:64:j_id9">Opportunity Owner Name</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:65:j_id9">Opportunity Owner Email (Formula)</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:66:j_id9">AWS Partner Success Manager Name</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:67:j_id9">AWS Partner Success Manager Email</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:68:j_id9">AWS ISV Success Manager (ISM) Name</span></Data></Cell><Cell ss:StyleID="colHeader"><Data ss:Type="String"><span id="j_id0:j_id7:69:j_id9">AWS ISV Success Manager (ISM) Email</span></Data></Cell></Row>
-            ${data.join('\n')}
+            ${data.join("\n")}
         </Table></Worksheet>
-</Workbook>`, 'utf8');
-  },
-};
+</Workbook>`,
+    "utf8"
+  );
+}

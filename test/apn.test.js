@@ -1,15 +1,14 @@
-'use strict';
+"use strict";
 
-const assert = require('assert');
-const apn = require('../lib/apn');
+import assert from "assert";
+import { opportunitiesXLSXtoJSON } from "../index.js";
 
-const stubs = require('./stubs');
+import { opportunities } from "./stubs.js";
 
-
-describe('apn', () => {
-  it('should parse XSLX feed and return it as a JSON array', () => {
-    const xlsxString = stubs.opportunities(10);
-    const feed = apn._opportunitiesXLSXtoJSON(xlsxString);
+describe("apn", function() {
+  it("should parse XSLX feed and return it as a JSON array", function() {
+    const xlsxString = opportunities(10);
+    const feed = opportunitiesXLSXtoJSON(xlsxString);
     assert.equal(10, feed.length);
   });
 });

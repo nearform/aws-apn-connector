@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "AWS Partner Network Automation Suite",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "mocha",
     "prepare": "husky install"
@@ -12,16 +13,20 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "puppeteer": "^19.3.0",
+    "playwright": "^1.40.1",
+    "puppeteer": "^21.5.2",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@faker-js/faker": "^7.6.0",
+    "@faker-js/faker": "^8.3.1",
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.10.5",
     "eslint": "^8.28.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-google": "^0.14.0",
-    "eslint-config-prettier": "^8.5.0",
-    "mocha": "^10.1.0",
-    "husky": "^8.0.0"
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-mocha": "^10.2.0",
+    "husky": "^8.0.0",
+    "mocha": "^10.1.0"
   }
 }

@@ -6,7 +6,7 @@ const PASSWORD = process.env.APN_PASSWORD || "";
 (async () => {
   const apn = new Client({ headless: false });
   await apn.connect(USERNAME, PASSWORD);
-  const certs = await apn.certifications.all();
-  console.log(certs);
+  const users = await apn.deactivateUserByEmail('ben.williamson@nearform.com');
+  // console.log(users);
   return apn.end();
 })();

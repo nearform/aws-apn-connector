@@ -8,3 +8,7 @@ jspm_packages
 
 # Serverless directories
 .serverless
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
