@@ -1,7 +1,6 @@
 // import puppeteer from 'puppeteer'
 import playwright from 'playwright'
-
-
+import * as XLSX from 'xlsx/xlsx.mjs'
 
 
   
@@ -29,22 +28,6 @@ export function Client(options = {}) {
       // need to handle jitter
       await page.waitForTimeout(2000)
       await page.waitForURL('**/s/');
-
-/*      // email
-      const emailInput = '#input-38'
-      await page.type(emailInput, username)
-
-      // password
-      const passInput = '#input-44'
-      await page.type(passInput, password)
-
-      await page.click('button.slds-button.slds-button_brand')
-      await page.waitForNavigation({ waitUntil: 'networkidle2' })
-
-      // go to the home
-      await page.waitForSelector('.plrs-badge')
-*/
-      // _viewId = 'a3H0h000000pQEbEAM'
       console.log('Authenticated into the APN')
       _page = page
       return page
@@ -72,8 +55,14 @@ export function Client(options = {}) {
         const downloadPromise = page.waitForEvent('download');
         await page.getByText('Export Opportunities - All Opportunities', { exact: true }).click();
         const download = await downloadPromise;
-        console.log(download.text())
-        return download
+        const downloadStream = await download.createReadStream();
+        const buffers = []
+        for await (const chunk of downloadStream) {
+          buffers.push(chunk);
+        }
+        var workbook = XLSX.read(Buffer.concat(buffers), {type:"buffer"});
+        const worksheet = workbook.Sheets[workbook.SheetNames[0]]
+        return XLSX.utils.sheet_to_json(worksheet)
 
 
 
@@ -157,11 +146,6 @@ export async function getCSV(_page, url) {
     return d.text()
   }, url)
   return csv
-}
-export function opportunitiesXLSXtoJSON(xlsx, options = {}) {
-  const workbook = XLSX.read(xlsx, options)
-  const worksheet = workbook.Sheets[workbook.SheetNames[0]]
-  return XLSX.utils.sheet_to_json(worksheet)
 }
 export function certificationsCSVtoJSON(csv, options = {}) {
   const workbook = XLSX.read(csv, options)
