@@ -2,6 +2,15 @@
 import playwright from 'playwright'
 import * as XLSX from 'xlsx/xlsx.mjs'
 
+async function downloadExcelFile(downloadPromise) {
+  const download = await downloadPromise
+  const downloadStream = await download.createReadStream()
+  const buffers = []
+  for await (const chunk of downloadStream) {
+    buffers.push(chunk)
+  }
+  return XLSX.read(Buffer.concat(buffers), { type: 'buffer' })
+}
 export function Client(options = {}) {
   let _browser = null
   let _context = null
@@ -14,7 +23,11 @@ export function Client(options = {}) {
           throw new Error('Authentication credentials are required')
         }
         if (!_browser) {
-          _browser = await playwright.chromium.launch(options)
+          let browserType = 'chromium'
+          if (options.browserType) {
+            browserType = options.browserType // could be firefox or webkit
+          }
+          _browser = await playwright[browserType].launch(options)
           _context = await _browser.newContext()
         }
         const page = await _context.newPage()
@@ -24,9 +37,9 @@ export function Client(options = {}) {
         await page.getByLabel('*Business email').fill(username)
         await page.getByLabel('*Password').fill(password)
         await page.getByRole('button', { name: 'Sign in' }).click()
-        // need to handle jitter
-        await page.waitForTimeout(2000)
-        await page.waitForURL('**/s/')
+
+        // wait for the authenticated dashboard page to load
+        await page.waitForSelector('p.welcomeUser')
         _page = page
         return page
       } catch (e) {
@@ -36,13 +49,49 @@ export function Client(options = {}) {
       }
     },
     users: {
-      deactivateByEmail: async email => {
+      allAllianceTeamMembers: async () => {},
+      allActive: async () => {
         const page = _page
         await page.goto(
           'https://partnercentral.awspartner.com/UserAdministrationPage'
         )
-        const user = await page.waitForSelector(`a ::-p-text(${email}`)
-        console.log(user)
+        const downloadPromise = page.waitForEvent('download')
+        await page.getByRole('link', { name: '[Export All]' }).click()
+        const workbook = await downloadExcelFile(downloadPromise)
+        const worksheet = workbook.Sheets[workbook.SheetNames[0]]
+        return XLSX.utils.sheet_to_json(worksheet)
+      },
+      // Must be exact name and only that name in the registration
+      deactivateByName: async name => {
+        const page = _page
+        await page.goto(
+          'https://partnercentral.awspartner.com/UserAdministrationPage'
+        )
+        await page.waitForSelector(
+          'input[name="j_id0\\:form\\:j_id14\\:j_id49"]'
+        )
+        await page
+          .locator('input[name="j_id0\\:form\\:j_id14\\:j_id49"]')
+          .fill(name)
+        await page
+          .locator('input[name="j_id0\\:form\\:j_id14\\:j_id49"]')
+          .press('Enter')
+        await page.waitForTimeout(1000)
+        // If anything other than 1 result is returned, throw an error.
+        const count = await page
+          .getByRole('link', { name: 'Deactivate' })
+          .count()
+        if (count !== 1) {
+          throw new Error(
+            `Expected 1 result for name "${name}", got ${count}. Failing safely, no users were deactivated.`
+          )
+        }
+        page.once('dialog', dialog => {
+          console.log(`Dialog message: ${dialog.message()}`)
+          dialog.accept()
+        })
+        await page.getByRole('link', { name: 'Deactivate' }).click()
+        return true
       }
     },
     opportunities: {
@@ -61,13 +110,8 @@ export function Client(options = {}) {
             exact: true
           })
           .click()
-        const download = await downloadPromise
-        const downloadStream = await download.createReadStream()
-        const buffers = []
-        for await (const chunk of downloadStream) {
-          buffers.push(chunk)
-        }
-        var workbook = XLSX.read(Buffer.concat(buffers), { type: 'buffer' })
+
+        const workbook = await downloadExcelFile(downloadPromise)
         const worksheet = workbook.Sheets[workbook.SheetNames[0]]
         return XLSX.utils.sheet_to_json(worksheet)
       },

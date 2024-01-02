@@ -4,6 +4,8 @@ This project is a web automation tool that uses [Playwright](https://playwright.
 - Authentication with the APN
 - Get all registered certifications for the partner
 - Get all registered opportunities and their status for the partner
+- Get all registered and active users
+- Deactivate a user with a provided name - must resolve to a single unique user. **NOTE:** It does not currently handle if the same name applies to two different individuals, in this case it will fail safely and throw an error.
 
 
 ## Getting Started
