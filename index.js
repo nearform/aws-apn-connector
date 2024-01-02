@@ -14,7 +14,7 @@ async function downloadExcelFile(downloadPromise) {
 export function Client(options = {}) {
   let _browser = null
   let _context = null
-  let _page = null
+  // let _page = null
   // eslint-disable-next-line no-unused-vars
   const apn = {
     connect: async (username, password) => {
@@ -39,9 +39,9 @@ export function Client(options = {}) {
         await page.getByRole('button', { name: 'Sign in' }).click()
 
         // wait for the authenticated dashboard page to load
-        await page.waitForSelector('p.welcomeUser')
-        _page = page
-        return page
+        return page.waitForSelector('p.welcomeUser')
+        // _page = page
+        // return page
       } catch (e) {
         throw new Error(
           'Authentication with the APN was unsuccessful. Please check your credentials and try again.'
@@ -51,7 +51,7 @@ export function Client(options = {}) {
     users: {
       allAllianceTeamMembers: async () => {},
       allActive: async () => {
-        const page = _page
+        const page = await _context.newPage()
         await page.goto(
           'https://partnercentral.awspartner.com/UserAdministrationPage'
         )
@@ -63,7 +63,7 @@ export function Client(options = {}) {
       },
       // Must be exact name and only that name in the registration
       deactivateByName: async name => {
-        const page = _page
+        const page = await _context.newPage()
         await page.goto(
           'https://partnercentral.awspartner.com/UserAdministrationPage'
         )
@@ -96,7 +96,7 @@ export function Client(options = {}) {
     },
     opportunities: {
       all: async () => {
-        const page = _page
+        const page = await _context.newPage()
         // Go to the opportunity list page to access the functions enabled there
         await page.goto(
           'https://partnercentral.awspartner.com/partnercentral2/s/pipeline-manager',
@@ -116,7 +116,7 @@ export function Client(options = {}) {
         return XLSX.utils.sheet_to_json(worksheet)
       },
       changeState: async (id, targetState) => {
-        const page = _page
+        const page = await _context.newPage()
         // Go to the opportunity list page to access the functions enabled there
         await page.goto(
           'https://partnercentral.awspartner.com/partnercentral2/s/pipeline-manager',
@@ -141,8 +141,9 @@ export function Client(options = {}) {
     },
     certifications: {
       all: async () => {
+        const page = await _context.newPage()
         const certifications = await getCSV(
-          _page,
+          page,
           'https://partnercentral.awspartner.com/PartnerCertificationDetailsExport'
         )
         return certificationsCSVtoJSON(certifications, { type: 'string' })
