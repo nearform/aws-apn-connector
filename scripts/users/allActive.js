@@ -1,4 +1,4 @@
-import { Client } from "../../index.js";
+import { Client } from "../../lib/index.js";
 
 const USERNAME = process.env.APN_USERNAME || "";
 const PASSWORD = process.env.APN_PASSWORD || "";
