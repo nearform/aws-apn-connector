@@ -4,9 +4,9 @@ const USERNAME = process.env.APN_USERNAME || "";
 const PASSWORD = process.env.APN_PASSWORD || "";
 
 (async () => {
-  const apn = new APNConnector.APNClient({ headless: true });
+  const apn = new APNConnector.Client({ headless: false });
   await apn.connect(USERNAME, PASSWORD);
-  const certs = await apn.certifications.all();
+  const certs = await apn.certificationsAll();
   console.log(certs);
   return apn.end();
 })();
