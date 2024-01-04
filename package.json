@@ -1,8 +1,8 @@
 {
-  "name": "aws-apn-connector",
+  "name": "@voodootikigod/aws-apn-connector",
   "version": "1.0.0",
   "description": "A Headless Web Browser Automation Library to allow for API integration with Amazon Web Services Partner Network (APN)",
-  "main": "index.js",
+  "main": "lib/index.js",
   "type": "module",
   "scripts": {
     "test": "mocha",
