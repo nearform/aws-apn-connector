@@ -1,5 +1,7 @@
 # AWS Amazon Partner Network (APN) API
 
+![Digital Bridge to AWS APN](/public/apn-connector.png)
+
 This project is a web automation tool that uses [Playwright](https://playwright.dev/) to interact with the [AWS Partner Network (APN)](https://aws.amazon.com/partners/) website, because they do not provide an API. It provides functionalities such as:
 - Authentication with the APN
 - Get all registered certifications for the partner
