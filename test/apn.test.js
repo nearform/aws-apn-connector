@@ -1,4 +1,4 @@
-import APNConnector from "../index.js";
+import APNConnector from "../lib/index.js";
 import assert from "assert";
 
 import { opportunities } from "./stubs.js";
@@ -11,7 +11,7 @@ describe("apn", function() {
     }
     console.log(Client.opportunitiesXLSXtoJSON)
     const xlsxString = opportunities(10);
-    const feed = APNConnector.Client.opportunitiesXLSXtoJSON(xlsxString);
+    const feed = APNConnector.Client.xlsxToJSON(xlsxString);
     assert.equal(10, feed.length);
   });
 });
