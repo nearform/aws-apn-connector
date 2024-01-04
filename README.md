@@ -69,6 +69,10 @@ async function main () {
 main()
 ```
 
+## Documentation 
+
+The library is pretty simple and I always welcome pull requests, but if you just want to consume the library, please find [the documentation here](https://voodootikigod.github.io/aws-apn-connector/).
+
 
 ## Built With
 * [Playwright](https://playwright.dev/) - For headless chrome (by default, can change via configuration if desired) interactions with the AWS APN
