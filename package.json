@@ -1,12 +1,14 @@
 {
-  "name": "apn-puppeteer",
+  "name": "aws-apn-connector",
   "version": "1.0.0",
-  "description": "AWS Partner Network Automation Suite",
+  "description": "A Headless Web Browser Automation Library to allow for API integration with Amazon Web Services Partner Network (APN)",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "mocha",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "eslint .",
+    "docs": "jsdoc -c .jsdoc.json"
   },
   "author": "Chris Williams <voodootikigod@gmail.com>",
   "license": "ISC",
@@ -21,12 +23,14 @@
     "@faker-js/faker": "^8.3.1",
     "@playwright/test": "^1.40.1",
     "@types/node": "^20.10.5",
+    "better-docs": "^2.7.3",
     "eslint": "^8.28.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-mocha": "^10.2.0",
     "husky": "^8.0.0",
+    "jsdoc": "^4.0.2",
     "mocha": "^10.1.0"
   }
 }

@@ -12,25 +12,32 @@ This project is a web automation tool that uses [Playwright](https://playwright.
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
-You need to have Node.js installed on your machine to run this project. You can [download it from here](https://nodejs.org/).
+You need to have Node.js installed on your machine to run this project. You can [download it from here](https://nodejs.org/). 
+
+#### System Requirements
+
+These are driven by the requirements for Playwright, which specifies these baseline operating environments.
+* Windows 10+, Windows Server 2016+ or Windows Subsystem for Linux (WSL).
+* MacOS 12 Monterey or MacOS 13 Ventura.
+* Debian 11, Debian 12, Ubuntu 20.04 or Ubuntu 22.04, with x86-64 or arm64 architecture.
 
 ### Installing
 
 Clone the repository
 
-```
+```shell
 git clone https://github.com/voodootikigod/aws-apn-connector
 ```
 
 Navigate into the project directory
 
-```
+```shell
 cd aws-apn-connector
 ```
 
 Install the dependencies
 
-```
+```shell
 npm install
 ```
 
@@ -38,7 +45,7 @@ npm install
 
 Import the Client function from the index.js file and create a new instance. You can then use the connect method to authenticate and the users.deactivateByEmail method to deactivate a user. Please note that at this time there is no re-authentication model implemented within the library, so implementations are bound to the standard web session authentication length of time. That said the only penalty for authentication before each transaction is time roughly 2 seconds (there appears to be no throttling otherwise).
 
-```
+```js
 import { Client } from './index.js'
 
 async function main () {
@@ -46,6 +53,9 @@ async function main () {
 
   // executes against the web portal to create session
   await client.connect('username', 'password')
+
+  // gets all certifications from the website
+  const isRemoved = await client.users.deactivateByName('Irene Cara')  // Take your passion and make it happen.
 
   // gets all certifications from the website
   const certifications = await client.certifications.all()
