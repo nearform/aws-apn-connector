@@ -1,5 +1,5 @@
 {
-  "name": "@voodootikigod/aws-apn-connector",
+  "name": "@nearform/aws-apn-connector",
   "version": "1.0.0",
   "description": "A Headless Web Browser Automation Library to allow for API integration with Amazon Web Services Partner Network (APN)",
   "main": "lib/index.js",
@@ -11,7 +11,7 @@
     "docs": "jsdoc -c .jsdoc.json"
   },
   "author": "Chris Williams <voodootikigod@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
