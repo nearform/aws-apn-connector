@@ -1,4 +1,4 @@
-import APNConnector from "../index.js";
+import APNConnector from "../../index.js";
 
 const USERNAME = process.env.APN_USERNAME || "";
 const PASSWORD = process.env.APN_PASSWORD || "";
