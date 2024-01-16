@@ -28,7 +28,7 @@ These are driven by the requirements for Playwright, which specifies these basel
 Clone the repository
 
 ```shell
-git clone https://github.com/voodootikigod/aws-apn-connector
+git clone https://github.com/nearform/aws-apn-connector
 ```
 
 Navigate into the project directory
@@ -73,7 +73,7 @@ main()
 
 ## Documentation 
 
-The library is pretty simple and I always welcome pull requests, but if you just want to consume the library, please find [the documentation here](https://voodootikigod.github.io/aws-apn-connector/).
+The library is pretty simple and I always welcome pull requests, but if you just want to consume the library, please find [the documentation here](https://nearform.github.io/aws-apn-connector/).
 
 
 ## Built With
@@ -81,4 +81,4 @@ The library is pretty simple and I always welcome pull requests, but if you just
 * [XLSX](https://www.npmjs.com/package/xlsx) - Used to handle Excel files - The preferred data format for everything AWS APN.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/voodootikigod/aws-apn-connector/blob/main/LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/nearform/aws-apn-connector/blob/main/LICENSE.md) file for details
