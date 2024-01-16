@@ -1,0 +1,9 @@
+node_modules/
+test/
+scripts/
+docs/
+.github/
+.husky/
+.env
+.eslintrc.json
+.git/

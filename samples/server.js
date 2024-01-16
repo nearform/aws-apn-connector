@@ -1,33 +1,35 @@
 import express from 'express'
-import {Client} from '../index.js'
+import APNConnector from '../index.js'
 
-const app = express();
-const apn = new Client({
+
+console.log(process.env)
+
+const PORT = process.env.PORT || 8080
+const USERNAME = process.env.APN_USERNAME
+const PASSWORD = process.env.APN_PASSWORD
+
+
+const app = express()
+const apn = new APNConnector.Client({
   headless: true,
-  args: [
-    '--disable-gpu',
-    '--no-sandbox',
-  ],
-  executablePath: 'google-chrome',
-});
-const PORT = process.env.PORT || 8080;
-const USERNAME = process.env.APN_USERNAME;
-const PASSWORD = process.env.APN_PASSWORD;
+  args: ['--disable-gpu', '--no-sandbox']
+})
 
 app.get('/opportunities', async (req, res) => {
-  const opps = await apn.opportunities();
-  res.send(opps);
-});
+  const opps = await apn.opportunitiesAll()
+  res.send(opps)
+})
 
 app.get('/certifications', async (req, res) => {
-  const certifications = await apn.certifications();
-  res.send(certifications);
-});
-
+  const certifications = await apn.certificationsAll()
+  res.send(certifications)
+})
 
 const start = async () => {
-  await apn.connect(USERNAME, PASSWORD);
-  app.listen(PORT, () => console.log(`AWS APN API Service now listening on port ${PORT}`));
-};
+  await apn.connect(USERNAME, PASSWORD)
+  app.listen(PORT, () =>
+    console.log(`AWS APN API Service now listening on port ${PORT}`)
+  )
+}
 
-start();
+start()
