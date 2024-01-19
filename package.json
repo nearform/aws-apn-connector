@@ -4,6 +4,10 @@
   "description": "A Headless Web Browser Automation Library to allow for API integration with Amazon Web Services Partner Network (APN)",
   "main": "lib/index.js",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nearform/aws-apn-connector.git"
+  },
   "scripts": {
     "test": "mocha",
     "prepare": "husky install",
