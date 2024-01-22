@@ -25,22 +25,10 @@ These are driven by the requirements for Playwright, which specifies these basel
 
 ### Installing
 
-Clone the repository
+Install the library from npm.
 
 ```shell
-git clone https://github.com/nearform/aws-apn-connector
-```
-
-Navigate into the project directory
-
-```shell
-cd aws-apn-connector
-```
-
-Install the dependencies
-
-```shell
-npm install
+npm i @nearform/aws-apn-connector
 ```
 
 ## Usage
@@ -48,9 +36,10 @@ npm install
 Import the Client function from the index.js file and create a new instance. You can then use the connect method to authenticate and the users.deactivateByEmail method to deactivate a user. Please note that at this time there is no re-authentication model implemented within the library, so implementations are bound to the standard web session authentication length of time. That said the only penalty for authentication before each transaction is time roughly 2 seconds (there appears to be no throttling otherwise).
 
 ```js
-import { Client } from './index.js'
+import { Client } from 'aws-apn-connector'
 
 async function main () {
+  // can pass in parameters for playwright to the Client constructor and it will apply them to the playwright instance
   const client = new Client()
 
   // executes against the web portal to create session
@@ -70,6 +59,10 @@ async function main () {
 
 main()
 ```
+
+## As-A-Service
+
+This library has been built in a manner that it can be exposed as a web API service (code available at [./samples/server.js](./samples/server.js)). There is also a `Containerfile` associated with this repository that can be used either directly or with enhancement to create a container deployable instance of this service into any container fabric. For either of these workflows to work, you will need to set environment variables for `APN_USERNAME` and `APN_PASSWORD` with your appropriate credentails.
 
 ## Documentation 
 
