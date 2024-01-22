@@ -1,6 +1,6 @@
 {
   "name": "@nearform/aws-apn-connector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Headless Web Browser Automation Library to allow for API integration with Amazon Web Services Partner Network (APN)",
   "main": "lib/index.js",
   "type": "module",
