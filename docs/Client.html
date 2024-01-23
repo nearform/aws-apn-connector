@@ -261,7 +261,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line173">line 173</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line181">line 181</a>
     </li></ul></dd>
     
 
@@ -541,7 +541,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line187">line 187</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line387">line 387</a>
     </li></ul></dd>
     
 
@@ -651,7 +651,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line118">line 118</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line126">line 126</a>
     </li></ul></dd>
     
 
@@ -858,7 +858,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line145">line 145</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line153">line 153</a>
     </li></ul></dd>
     
 
@@ -891,6 +891,283 @@
 </div>
 
 
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="scorecard"><span class="type-signature">(async) </span>scorecard<span class="signature">()</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Extracts the current Partner Scorecard from the AWS Partner Network (APN) and returns it as a JSON object.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line279">line 279</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>a promise that resolves to an object containing the following properties:</p>
+<ul>
+<li>partnerId: the partner ID of the APN account</li>
+<li>tierReviewDate: the date the tier review is due</li>
+<li>companyName: the name of the company</li>
+<li>feeRenewalDate: the date the APN fee is due</li>
+<li>partnerPath: the current partner path</li>
+<li>pathStage: the current path stage</li>
+<li>currentAPNProgramFee: the current APN program fee</li>
+<li>yearlyAPNProgramFee: the yearly APN program fee</li>
+<li>knowledge: an object containing the following properties:</li>
+<li>accreditedIndividuals: an object containing the following properties:</li>
+<li>currentTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of accredited individuals achieved</li>
+<li>target: the number of accredited individuals required to achieve the next tier</li>
+</ul>
+</li>
+<li>upgradeTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of accredited individuals achieved</li>
+<li>target: the number of accredited individuals required to achieve the next tier</li>
+</ul>
+</li>
+<li>technicalAccreditedIndividuals: an object containing the following properties:
+<ul>
+<li>currentTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of accredited individuals achieved</li>
+<li>target: the number of accredited individuals required to achieve the next tier</li>
+</ul>
+</li>
+<li>upgradeTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of accredited individuals achieved</li>
+<li>target: the number of accredited individuals required to achieve the next tier</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>businessAccreditedIndividuals: an object containing the following properties:
+<ul>
+<li>currentTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of accredited individuals achieved</li>
+<li>target: the number of accredited individuals required to achieve the next tier</li>
+</ul>
+</li>
+<li>upgradeTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of accredited individuals achieved</li>
+<li>target: the number of accredited individuals required to achieve the next tier</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>foundationalCertifiedIndividuals: an object containing the following properties:
+<ul>
+<li>currentTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of accredited individuals achieved</li>
+<li>target: the number of accredited individuals required to achieve the next tier</li>
+</ul>
+</li>
+<li>upgradeTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of accredited individuals achieved</li>
+<li>target: the number of accredited individuals required to achieve the next tier</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>technicalCertifiedIndividuals: an object containing the following properties:
+<ul>
+<li>currentTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of accredited individuals achieved</li>
+<li>target: the number of accredited individuals required to achieve the next tier</li>
+</ul>
+</li>
+<li>upgradeTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of accredited individuals achieved</li>
+<li>target: the number of accredited individuals required to achieve the next tier</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>technicalCertifiedIndividualsProOrSpecialty: an object containing the following properties:
+<ul>
+<li>currentTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of accredited individuals achieved</li>
+<li>target: the number of accredited individuals required to achieve the next tier</li>
+</ul>
+</li>
+<li>upgradeTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of accredited individuals achieved</li>
+<li>target: the number of accredited individuals required to achieve the next tier</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>experience: an object containing the following properties:</li>
+<li>launchedOpportunities: an object containing the following properties:
+<ul>
+<li>currentTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of launched opportunities achieved</li>
+<li>target: the number of launched opportunities required to achieve the next tier</li>
+</ul>
+</li>
+<li>upgradeTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of launched opportunities achieved</li>
+<li>target: the number of launched opportunities required to achieve the next tier</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>monthlyRecurringRevenue: an object containing the following properties:
+<ul>
+<li>currentTier: an object containing the following properties:</li>
+<li>achieved: the amount of monthly recurring revenue achieved
+<ul>
+<li>target: the amount of monthly recurring revenue required to achieve the next tier</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>upgradeTier: an object containing the following properties:</li>
+<li>achieved: the amount of monthly recurring revenue achieved</li>
+<li>target: the amount of monthly recurring revenue required to achieve the next tier</li>
+<li>customerSuccess: an object containing the following properties:</li>
+<li>publiclyReferenceableCustomers: an object containing the following properties:
+<ul>
+<li>currentTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of publicly referenceable customers achieved</li>
+<li>target: the number of publicly referenceable customers required to achieve the next tier</li>
+</ul>
+</li>
+<li>upgradeTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of publicly referenceable customers achieved</li>
+<li>target: the number of publicly referenceable customers required to achieve the next tier</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>customerSatisfactionResponses: an object containing the following properties:
+<ul>
+<li>currentTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of customer satisfaction responses achieved</li>
+<li>target: the number of customer satisfaction responses required to achieve the next tier</li>
+</ul>
+</li>
+<li>upgradeTier: an object containing the following properties:
+<ul>
+<li>achieved: the number of customer satisfaction responses achieved</li>
+<li>target: the number of customer satisfaction responses required to achieve the next tier</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
 
     
 
@@ -956,7 +1233,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line64">line 64</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line72">line 72</a>
     </li></ul></dd>
     
 
@@ -1123,7 +1400,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line82">line 82</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line90">line 90</a>
     </li></ul></dd>
     
 
@@ -1185,6 +1462,188 @@
 </div>
 
 
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".ancestor"><span class="type-signature">(async, static) </span>ancestor<span class="signature">(element, match)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Find the ancestor node from the provide provided element that matches the provided match function.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the starting element to begin searching its ancestors for a match</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>match</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the function to use to match the ancestor element, must return true or false</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line397">line 397</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>the element in the ancsestor chain that matches the provided match function</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
 
     
 
@@ -1299,7 +1758,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line196">line 196</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line474">line 474</a>
     </li></ul></dd>
     
 
@@ -1469,7 +1928,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line212">line 212</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line490">line 490</a>
     </li></ul></dd>
     
 
@@ -1510,6 +1969,568 @@
 
 
         
+            
+
+    
+
+    
+    <h4 class="name" id=".scorecardBlock"><span class="type-signature">(async, static) </span>scorecardBlock<span class="signature">(page, blockName)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Query the scorecard block information from the APN and return the text content of the block.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>page</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the starting locator element to begin searching for the scorecard block</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>blockName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the target name/text to work from to find the scorecard block</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line413">line 413</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>the text content of the scorecard block</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".scorecardRow"><span class="type-signature">(async, static) </span>scorecardRow<span class="signature">(page, blockName, nth)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Parses the information for the scorecard row from the APN and returns the current tier and upgrade tier values.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>page</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>the starting/root element to query from</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>blockName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>the text name of the scorecard row to query for</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>nth</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">integer</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"><p>the nth row to query for, defaults to 0</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line444">line 444</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>object returning the current tier and upgrade tier values for the scorecard row</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".targetedValue"><span class="type-signature">(static) </span>targetedValue<span class="signature">(content)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Helper function to parse targeted valeus from the APN scorecard. This is used to parse the X of Y values from the scorecard.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>content</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the textual content to parse for the targeted value (X of Y)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line427">line 427</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>an object containing the achieved and target values OR the original value if not of format X of Y</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
     
 
     
@@ -1531,7 +2552,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jan 04 2024 11:47:01 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Jan 22 2024 20:17:23 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
