@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "mocha",
-    "prepare": "husky install",
+    "prepare": "husky",
     "lint": "eslint .",
     "docs": "jsdoc -c .jsdoc.json"
   },
@@ -32,7 +32,7 @@
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-mocha": "^10.2.0",
-    "husky": "^8.0.0",
+    "husky": "^9.0.11",
     "jsdoc": "^4.0.2",
     "mocha": "^10.1.0"
   }
